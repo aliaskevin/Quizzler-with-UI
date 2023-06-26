@@ -11,25 +11,19 @@ class QuizBrain:
 
     def still_has_questions(self):
         return self.question_number < len(self.question_list)
-
+# Checking if questions are left
     def next_question(self):
         self.current_question = self.question_list[self.question_number]
         self.question_number += 1
         q_data = html.unescape(self.current_question.text)
         return f"Q.{self.question_number}: {q_data}"
-        # user_answer = input(f"Q.{self.question_number}: {q_data} (True/False): ")
-        # self.check_answer(user_answer)
-
+# Checking if the user's input is correct or wrong
     def check_answer(self, user_answer):
         correct_answer = self.current_question.answer
         if user_answer == correct_answer:
             self.score += 1
             return True
-            # print("You got it right!")
         else:
             return False
-            # print("That's wrong.")
 
-        # print(f"Your current score is: {self.score}/{self.question_number}")
-        # print("\n")
 
