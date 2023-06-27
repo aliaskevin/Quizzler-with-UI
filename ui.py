@@ -1,12 +1,12 @@
 from tkinter import *
 from quiz_brain import QuizBrain
-
+# constants
 THEME_COLOR = "#375362"
 FONT = "Ariel"
 
 
 class QuizInterface:
-
+# Initializing quiz interface
     def __init__(self, quiz_data: QuizBrain):
         self.quiz = quiz_data
         self.window = Tk()
@@ -35,7 +35,7 @@ class QuizInterface:
         self.get_next_question()
 
         self.window.mainloop()
-
+# Display next question
     def get_next_question(self):
         self.canvas.configure(bg="white")
         if self.quiz.still_has_questions():
@@ -46,7 +46,7 @@ class QuizInterface:
             self.canvas.itemconfig(self.question, text="You are reached the limit")
             self.right_button.config(state="disabled")
             self.wrong_button.config(state="disabled")
-
+# Feedback for correct and wrong answer
     def right_click(self):
         self.give_feedback(self.quiz.check_answer("True"))
 
